@@ -1,0 +1,30 @@
+@use '../config' as *;
+@use '../variables' as *;
+
+.modal-complete {
+  z-index: 1000000;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.098);
+  backdrop-filter: blur(6px);
+  filter: blur(0);
+  min-height: 100vh;
+  @include center();
+  visibility: hidden;
+  opacity: 0;
+
+  i {
+    @include icon($fa-var-check-circle,32px,after);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+
+  .small-container {
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: $bs;
+    padding: 2rem;
+    width: min(86%,400px);
+    background-color: map-get($clr-primary, 300 );
+  }
+}

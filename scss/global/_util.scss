@@ -1,0 +1,49 @@
+@use '../abstract/config' as *;
+.border {
+  border: 2px solid red;
+  > * {
+    border: 2px solid green;
+  }
+}
+
+.small-container {
+  width: min(86%,600px);
+  margin-inline: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.meter {
+  width: 100%;
+  height: .9rem;
+  background-color: lightgray;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 50%;
+  height: 100%;
+  background-color: map-get($clr-primary, 100 );
+  transition: width 0.3s ease-in-out;
+}
+
+.primary-btn {
+  background-color: map-get($clr-neutral, 100 );
+  color: map-get($clr-primary,400 );
+  padding: .7rem 1.8rem;
+  border-radius: 40px;
+  font-weight: $bold;
+  cursor: pointer;
+
+  @include hover(background-color,$clr-primary,100);
+  @include hover(color,$clr-neutral,100);
+  @include hoverScale(1.8);
+
+  &:active {
+    opacity: .4;
+  }
+}
+

@@ -1,0 +1,155 @@
+@use '../config' as *;
+@use '../variables' as *;
+
+
+
+aside {
+  overflow-x: hidden;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000000;
+  inset: 0;
+  padding: 2rem 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.009);
+  overflow-y: scroll;
+
+  > .small-container {
+    position: relative;
+    background-color: map-get($clr-primary, 300 );
+    box-shadow: $bs;
+    padding: 2rem;
+    border-radius: 6px;
+
+    #modal-close-btn {
+      @include icon($fa-var-close,20px,after);
+      margin-left: auto;
+      display: block;
+      position: absolute;
+      right: 2rem;
+    }
+  }
+
+  .section-wrapper section>:nth-child(1) {
+    margin: 0;
+  }
+
+  section {
+    .info {
+      @include flex(row,1rem);
+
+      span {
+        font-size: 14px;
+      }
+    
+      input {
+        width: 20px;
+      }
+    }
+
+    > :last-child {
+      display: none;
+      margin-top: 3rem;
+      text-align: center;
+
+      i {
+        &::after {
+          font-weight: $bold;
+          content: "$";
+          color: map-get($clr-primary, 400);
+        }
+      }
+
+      > :first-child {
+        font-size: 14px;
+        font-weight: $regular;
+      }
+
+      > :last-child {
+        @include flex(row,2rem);
+
+        > * {flex: 1;}
+      }
+
+      .input-wrapper {
+        border-radius: 9999999px;
+        @include flex(row,1rem);
+        align-items: center;
+        background-color: map-get($clr-neutral, 100 );
+        padding: 0 2rem;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+
+        input {
+          width: 100%;
+          border: none;
+          outline: none;
+          background: none;
+        }
+      }
+    }
+  }
+
+  section.active {
+    > :last-child {
+      @include flex(column,2rem);
+    }
+  }
+
+  section.empty {
+    opacity: .6;
+  }
+
+  section div.box1 {
+    margin: 0;
+    > :nth-child(2) {
+      order: 3;
+      margin: 0;
+    }
+
+    > :nth-child(3) {
+      margin: 2rem 0;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  aside {
+    .info > * {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    section div.box1 {
+      > :nth-child(2) {
+        order: initial;
+      }
+    }
+
+    .box1.box1-wrapper {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      > :first-child {
+        flex: 1;
+      }
+
+      > :last-child {
+        width: 100%;
+      }
+    }
+
+    section.active .box2 {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      > :nth-child(2) {
+        flex: 0 1 300px;
+      }
+    }
+  }
+}

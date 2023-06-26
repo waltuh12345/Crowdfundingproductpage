@@ -1,0 +1,51 @@
+@use '../config' as *;
+@mixin divider($position) {border-#{$position}: 1px solid map-get($clr-neutral, 100 );}
+
+
+#sec2 {
+  text-align: center;
+  font-size: 14px;
+  color: map-get($clr-neutral, 200 );
+  
+  h2 {
+    color: map-get($clr-neutral, 100 );
+    margin: 0;
+  }
+
+  ul  {
+    @include grid(.5rem);
+    margin-bottom: 2rem;
+
+    li {
+      padding: 1rem 0;
+    }
+
+    > :nth-child(2) {
+      @include divider(top);
+      @include divider(bottom);
+    }
+
+  }
+
+  .progress {
+    width: 70%;
+  }
+}
+
+@media (min-width: 600px) {
+  #sec2 {
+    ul {
+      @include flex(row,0);
+
+      > * {
+        flex: 1;
+      }
+
+      > :nth-child(2) {
+        border: none;
+        @include divider(left);
+        @include divider(right);
+      }
+    }
+  }
+}
